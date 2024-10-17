@@ -113,6 +113,7 @@ const showPhoneDetails = (phone) =>{
         <p><span>Storage: </span>${phone.mainFeatures.storage}<p>
         <p><span>Display Size: </span>${phone.mainFeatures.displaySize}<p>
         <p><span>Release Date: </span>${phone.releaseDate}<p>
+        <p><span>GPS: </span>${phone.others?.GPS || 'No GPS Available'}<p>
     `;
 
 
