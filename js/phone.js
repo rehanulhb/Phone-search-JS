@@ -22,7 +22,7 @@ const displayPhones = (phones,isShowAll) =>{
         showAllContainer.classList.add('hidden');
     }
 
-    console.log('is Show All',isShowAll);
+    //console.log('is Show All',isShowAll);
 
     //Only display 12 items if not show All 
     if(!isShowAll){
@@ -68,7 +68,7 @@ const handleSearch = (isShowAll) =>{
     toggleLoadingSpinner(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    console.log(searchText);
+    //console.log(searchText);
     loadPhone(searchText,isShowAll);
 }
 
@@ -89,18 +89,34 @@ const handleShowAll = () =>{
 }
 
 const handleShowDetail = async(id) =>{
-    console.log('Clicked Show Details',id);
+    //console.log('Clicked Show Details',id);
     
     //Load Single Phone Data
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
     const data = await res.json();
     const phone = data.data;
-    showPhoneDetails(data)
+    showPhoneDetails(phone);
 
 
 }
 
 const showPhoneDetails = (phone) =>{
+    console.log(phone);
+    const phoneName = document.getElementById('show-detail-phone-name');
+    phoneName.innerText = phone.name;
+    //console.log(phone.name);
+
+    const showDetailContainer = document.getElementById('show-detail-container');
+
+    showDetailContainer.innerHTML = `
+        <img src="${phone.image}" alt="" />
+        <p><span>Storage: </span>${phone.mainFeatures.storage}<p>
+        <p><span>Display Size: </span>${phone.mainFeatures.displaySize}<p>
+        <p><span>Release Date: </span>${phone.releaseDate}<p>
+    `;
+
+
+
     show_details_modal.showModal();
 }
 
