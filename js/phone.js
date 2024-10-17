@@ -114,6 +114,7 @@ const showPhoneDetails = (phone) =>{
         <p><span>Display Size: </span>${phone.mainFeatures.displaySize}<p>
         <p><span>Release Date: </span>${phone.releaseDate}<p>
         <p><span>GPS: </span>${phone.others?.GPS || 'No GPS Available'}<p>
+        <p><span>GPS: </span>${phone.others?.GPS ? phone.others.GPS : 'No GPS Available in this device'}<p>
     `;
 
 
